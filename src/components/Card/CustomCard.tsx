@@ -1,6 +1,15 @@
 import React from "react";
 import "./CustomCard.css";
 import { useNavigate } from "react-router-dom";
+import {
+  Card,
+  CardActionArea,
+  CardMedia,
+  CardContent,
+  Typography,
+  CardActions,
+  Button,
+} from "@mui/material";
 
 interface Props {
   name?: string;
@@ -15,18 +24,24 @@ export const CustomCard = ({ image, name, id }: Props) => {
   };
 
   return (
-    <div className="card">
-      <div className="containerImage">
-        <img src={image} alt="Image Character" className="image" />
-      </div>
-      <div className="info">
-        <div>
-          <strong>{name}</strong>
-        </div>
-      </div>
-      <button className="button" onClick={() => toDetails(id)}>
-        <strong>Ver Más</strong>
-      </button>
-    </div>
+    <Card>
+      <CardActionArea>
+        <CardMedia  
+          component="img"
+          image={image}
+          alt="green iguana"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {name}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+        <Button type="button" size="small" color="primary" onClick={()=> toDetails(id)}>
+          More
+        </Button>
+      </CardActions>
+    </Card>
   );
 };

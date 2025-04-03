@@ -5,6 +5,7 @@ import { CharacterID } from "../../../infrastructure/interface/CharacerID";
 import { getCharacterID } from "../../../core/actions/characters/getCharacterByID";
 
 import "./Details.css";
+import { Card, CardActionArea, CardMedia, CardContent, Typography, CardActions, Button } from "@mui/material";
 
 export const Details = () => {
   const { id } = useParams();
@@ -27,34 +28,35 @@ export const Details = () => {
   return (
     <div className="details">
       {character ? (
-        <div className="characterContainer">
-          <div className="containerImage">
-            <img src={character.image} alt="Character" className="image" />
-          </div>
-          <div className="containerInfo">
-            <div>
-              <strong>Name</strong>
-              <p>{character.name}</p>
-            </div>
-            <div>
-              <strong>Gender</strong>
-              <p>{character.gender}</p>
-            </div>
-            <div>
-            <strong>Origin</strong>
-            <p>{character.origin.name}</p>
-            </div>
-
-            <div>
-              <strong>Status</strong>
-              <p>{character.status}</p>
-            </div>
-            <div>
-              <strong>Specie</strong>
-              <p>{character.species}</p>
-            </div>
-          </div>
-        </div>
+         <Card sx={{ maxWidth: 345 }}>
+         <CardActionArea>
+           <CardMedia
+             component="img"
+             image={character.image}
+             alt="green iguana"
+           />
+           <CardContent>
+            <Typography gutterBottom variant="h6">Name</Typography>
+             <Typography gutterBottom variant="caption" component="div">
+               {character.name}
+             </Typography>
+             <Typography gutterBottom variant="h6">Gender</Typography>
+             <Typography gutterBottom variant="caption" component="div">
+               {character.gender}
+             </Typography>
+             <Typography gutterBottom variant="h6">Origin</Typography>
+             <Typography gutterBottom variant="caption" component="div">
+               {character.origin.name}
+             </Typography>
+             <Typography gutterBottom variant="h6">Specie</Typography>
+             <Typography gutterBottom variant="caption" component="div">
+               {character.species}
+             </Typography>
+           </CardContent>
+         </CardActionArea>
+         <CardActions>
+         </CardActions>
+       </Card>
       ) : (
         <div>
           <h1>NO DATA</h1>
