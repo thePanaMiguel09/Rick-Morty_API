@@ -58,9 +58,11 @@ export const Details = () => {
          </CardActions>
        </Card>
       ) : (
-        <div>
-          <h1>NO DATA</h1>
-        </div>
+        <CardContent>
+          <Typography gutterBottom variant="caption" color="info">
+              Cargando Datos
+          </Typography>
+        </CardContent>
       )}
     </div>
   );
